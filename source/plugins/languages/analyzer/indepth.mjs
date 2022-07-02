@@ -21,8 +21,8 @@ export class IndepthAnalyzer extends Analyzer {
           break
         if (this.ignore(repository))
           continue
-        const {repo, path} = this.parse(repository)
-        if (await this.clone(repo)) {
+        if (await this.clone(repository)) {
+          const {path} = this.parse(repository)
           await this.analyze(path, {categories})
           await this.clean(path)
         }

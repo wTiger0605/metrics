@@ -46,8 +46,8 @@ export class Analyzer {
   }
 
   /**Clone a repository */
-  async clone(repo) {
-    const path = paths.join(os.tmpdir(), `${this.uid}-${repo.replace(/[^\w]/g, "_")}`)
+  async clone(repository) {
+    const {path} = this.parse(repository)
     try {
       this.debug(`cloning ${repo} to ${path}`)
       await fs.rm(path, {recursive: true, force: true})
@@ -77,8 +77,7 @@ export class Analyzer {
   }
 
   /**Analyze a repository */
-  async analyze(path, {commits, categories}) { //eslint-disable-line no-unused-vars
-    //if path exists in fs, analyze it otherwise auto-compute path from tempdir
+  async analyze(path, {categories}) { //eslint-disable-line no-unused-vars
     //TODO
   }
 
